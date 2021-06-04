@@ -15,7 +15,7 @@ ENV K8S_BAZEL_BRANCH k8s
 RUN apt-get update && apt-get install -y git git-review
 
 # Copy in the source
-RUN git clone --branch ${ONOS_LATEST_BRANCH} https://gerrit.onosproject.org/onos onos && \
+RUN git clone --branch ${ONOS_LATEST_BRANCH} http://172.30.0.2/oscar/onos.git onos && \
         cd onos && \
 	git reset --hard ${ONOS_VERSION} && \
         mkdir -p /src/ && \

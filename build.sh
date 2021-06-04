@@ -1,0 +1,1 @@
+docker build --network=host -t oscar/onos-sona-nightly-docker:k8s .
