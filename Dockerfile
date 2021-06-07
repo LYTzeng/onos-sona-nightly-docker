@@ -8,7 +8,7 @@ ENV BUILD_NUMBER docker
 ENV JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
 ENV BAZEL_VERSION 2.0.0
 ENV ONOS_LATEST_BRANCH onos-1.15-mod 
-ENV ONOS_VERSION e6170f67f48a38eb82a1d66080a615bbc11df587
+#ENV ONOS_VERSION e6170f67f48a38eb82a1d66080a615bbc11df587
 ENV K8S_BAZEL_BRANCH k8s
 
 # Install dependencies
@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y git git-review
 # Copy in the source
 RUN git clone --branch ${ONOS_LATEST_BRANCH} http://172.30.0.2/oscar/onos.git onos && \
         cd onos && \
-	git reset --hard ${ONOS_VERSION} && \
+#	git reset --hard ${ONOS_VERSION} && \
         mkdir -p /src/ && \
         cd ../ && \
         cp -R onos /src/ && \
