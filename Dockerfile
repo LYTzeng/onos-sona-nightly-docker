@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y git git-review
 
 # Copy in the source
 # Prevent cache while docker build
-RUN curl http://172.30.0.2/api/v4/projects/18/repository/commits?ref_name=onos-1.15-mod > commits.json
+RUN curl -s http://172.30.0.2/api/v4/projects/18/repository/commits?ref_name=onos-1.15-mod | md5sum > commits.json
 RUN git clone --branch ${ONOS_LATEST_BRANCH} http://172.30.0.2/oscar/onos.git onos && \
         cd onos && \
 #	git reset --hard ${ONOS_VERSION} && \
