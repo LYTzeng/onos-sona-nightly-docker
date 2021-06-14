@@ -12,7 +12,7 @@ ENV ONOS_LATEST_BRANCH onos-1.15-mod
 ENV K8S_BAZEL_BRANCH k8s
 
 # Install dependencies
-RUN apt-get update && apt-get install -y git git-review
+RUN apt-get update && apt-get install -y git git-review zip python git bzip2 build-essential
 
 # Copy in the source
 # Prevent cache while docker build
@@ -48,8 +48,7 @@ RUN git checkout ${ONOS_LATEST_BRANCH} && \
 # FIXME - dependence on ONOS_ROOT and git at build time is a hack to work around
 # build problems
 WORKDIR /src/onos
-RUN apt-get update && apt-get install -y zip python git bzip2 build-essential && \
-        curl -L -o bazel.sh https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}/bazel-${BAZEL_VERSION}-installer-linux-x86_64.sh && \
+RUN curl -L -o bazel.sh https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}/bazel-${BAZEL_VERSION}-installer-linux-x86_64.sh && \
         chmod +x bazel.sh && \
         ./bazel.sh --user && \
         export ONOS_ROOT=/src/onos && \
